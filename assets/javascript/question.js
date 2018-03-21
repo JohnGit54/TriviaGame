@@ -25,10 +25,25 @@ Question.prototype.correctAnswer = function(choice){
        //return ture or false 
        // using long winded way
        if( choice === this.answer){
-           return true;
+           var userQuestion = new UserQuestion( true,choice,this.answer);
+           return userQuestion; //true;
        } else{
-           return false;
+           var userQuestion = new UserQuestion( false,choice,this.answer);
+           return userQuestion; //false;
        }
+}
+
+
+function UserQuestion(isRight , userChoice , correctAnswer){
+    this.isRight = isRight;
+    this.userChoice = userChoice;
+    this.correctAnswer = correctAnswer;
+    this.buttonid = null;
+}
+
+UserQuestion.prototype.setButtonId=function(buttonId){
+    console.log("in setButtonId=function(buttonId) " ,buttonId );
+    this.buttonid = buttonId;
 }
 
 

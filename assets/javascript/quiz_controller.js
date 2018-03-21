@@ -1,3 +1,4 @@
+
 function Quiz(questions) {
     this.questions = questions;
     this.score = 0;
@@ -24,11 +25,18 @@ Quiz.prototype.isEnded = function () {
 Quiz.prototype.guess = function (answer) {
     // this.questionIndex++;
     console.log("Quiz Guess: ", answer);
-    //this gets items class Question all items and question.correctAnser  
-    if (this.getQuestionIndex().correctAnswer(answer)) {
+    //this gets items class Question all items and question.correctAnser 
+	var userResults = this.getQuestionIndex().correctAnswer(answer);
+	console.log( userResults.isRight);
+    // if (this.getQuestionIndex().correctAnswer(answer)) {
+    //     this.score++;
+    // }
+
+    if (userResults.isRight){
         this.score++;
     }
     this.questionIndex++;
+    return userResults;
 }
 
 
