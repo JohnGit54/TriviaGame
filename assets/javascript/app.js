@@ -44,19 +44,26 @@ function populateHtml() {
             $(this).html(choices[chcIx]);
             chcIx++;
         })
-
-
+        showProgress();
     }
 
+}
+
+function showProgress(){
+    //chnage footer text
+    var curQuesNum = quiz.questionIndex +1;
+    var footr = $('#progress');
+    footr.html("Question " + curQuesNum + " of " + questions.length);
+    //at end show results
 }
 
 function showScores() {
     console.log("show Scores");
     var gameOverHtml = "<h1>Result</h1>";
-    gameOverHtml+= " <h2 id='score'> Your scores: " + quiz.score + "</h2>";
+    gameOverHtml += " <h2 id='score'> Your score : " + quiz.score + "</h2>";
 
     //grab div id"quiz - replace with this
-    $('#id').html(gameOverHtml);
+    $('.grid').html(gameOverHtml);
 }
 
 ///////////////////////////
@@ -79,8 +86,9 @@ $(document).ready(function () {
     //add click event to buttons
     $('button').click(function () {
         var bID = $(this).attr("id");
-        console.log("ButtonClicked", bID);
-        //quiz.guess()  //38.29
+        console.log("ButtonClicked", bID, $(this).html());
+        quiz.guess($(this).html());  //38.29
+        populateHtml();
     })
 
     populateHtml();
