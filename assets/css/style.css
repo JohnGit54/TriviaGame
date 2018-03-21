@@ -63,3 +63,12 @@ footer{
     border-radius: 50px;
     text-align: center;
 }
+
+.grnback{
+    background-color: green;
+}
+
+.rdback{
+    background-color: red;
+}
+
