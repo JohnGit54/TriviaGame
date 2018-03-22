@@ -3,22 +3,24 @@
 body{
     margin-top: 30px;
     font-family: fantasy;
-    background-image: url('../images/hg1.jpg');
-    background-size: cover;
+    background-image: url('../images/whomillback.jpg');
+    background-size: cover;	
     font-size-adjust: inherit;
 }
 
 .grid{
     width: 1000px;
-    height: 600px;
-    margin: 100px auto;
-    background-color: bisque;
+    height: 700px;
+    margin: 80px auto;
     padding: 20px 40px;
-    border-radius: 35px;
+    border-radius: 30px;
     border: 2px solid #cbcbcb;
-    box-shadow: 10px 15px 5px #cbcbcb;
-    /* background-image: url('../images/unsplash2.jpg'); */
+	background-image: url('../images/millforeg.png');
+	opacity: .8;
+	background-size: cover;
+    box-shadow: 10px 15px 5px #584f4f;
 }
+   
 
 .grid h1{    
     background: #57636e;
@@ -26,82 +28,109 @@ body{
     text-align: center;
     color: #fff;
     padding: 8px 0;
-    border-radius: 35px;
-
+    border-radius: 30px;
 }
 
 #hrHeader{
     margin-bottom: 20px;
 }
 
+#timeDisplay{
+    width: 100%;
+    height: 100px;
+    background: darkkhaki;
+    text-align: center;
+    padding-top: 20px;
+    font-size:30px;
+}
+
 #question{
     font-size: 30px;
-    color: #5a6772;
+    color: black; /*#5a6772;*/
+	background: darkkhaki;
+	font-size: 36px;
 }
 
 #splashscreen{
     margin: 80px auto 0 auto;
-    /* border: 2px solid black; */
     text-align: center;
     position: relative;
 }
 #resultspage,
-#dStart{
+#dStart,
+#dReStart{
     padding: 20px 40px;
-    background: gray;
     width:200px;
+	background: darkkhaki;
     border: 1px solid black;
     text-align: center;
-    font-size: 20px;
+    font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     line-height: 1.50;
     right: calc (100% - 150px / 2);
     margin: 0 auto;    
+    box-shadow: 10px 15px 5px #584f4f;
+    border-radius: 15px;       
 }
-#score,
+
 #resultspage{
     text-align: center;
 }
 
-#dStart:hover{
-    background: rgb(196, 181, 181);
+#dStart:hover,
+#dReStart:hover{
+    background: white;
 }
 
 button{
-    margin-top: 10px 40px 10px 0;
+    margin-top: 20px 40px 10px 0;
     padding: 10px 10px;
     width: 400px;
 	height: 100px;
-    font-size: 20px;
-    color: #fff;
+    font-size: 26px;
+    color: rgb(104, 17, 17);
     border:  1px solid #1d3c6a;
-    border-radius: 50px;
+    border-radius: 30px;
 }
 
-button:hover{
+/* button:hover{  -- cause the wrong answer background color to not chnge
     cursor: pointer;
-    background-color:#57636e;
+    background-color:#f5f5f5;
     color: coral;
 
-}
+} */
 button:focus{
     outline: 0;
 }
 
+#score,
+.score,
 footer{
-    background:#5a6772;
+ 	background: darkkhaki;
     color: #2b2b2b; 
-    font-size: 18px;
-    border-radius: 50px;
+    font-size: 26px;
+    border-radius: 20px;
     text-align: center;
+	padding:10px;
+}
+.score,
+#score{
+	padding:40px;
 }
 
 .grnback{
-    background-color: green;
+    background-color: rgb(170, 238, 125);
 }
 
 .rdback{
-    background-color: red;
+    background-color: rgb(211, 22, 22);
 }
 
+.backWhite{
+    background-color: white;
+}
+
+.italic{
+    font-style: italic;
+}
