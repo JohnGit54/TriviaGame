@@ -1,7 +1,8 @@
 ////////////////////////////////////////////////////
 // 2018-03-21 John Palumbo.
 ////////////////
-
+// A - if questin take longer than 7 second - user fails on that question
+// B - game total time should be less than 45 seconds
 
 ////////////////////////////
 // GLOBAL VARS
@@ -9,7 +10,10 @@
 
 var isEnded = false;
 var interadID;
-var setTimeoutID; // if game total is> 30 seconds we stop game 
+var setTimeoutID;
+var setTimeoutID2;
+var setIntervalID;
+var setIntervalID2;
 
 
 
@@ -43,6 +47,7 @@ function populateHtml() {
             $(this).html(choices[chcIx]);
             chcIx++;
         })
+        
         showProgress();
     }
 
@@ -52,45 +57,40 @@ function showProgress() {
     //chnage footer text
     var curQuesNum = quiz.questionIndex + 1;
     var footr = $('#progress');
-    footr.html("Question " + curQuesNum + " of " + questions.length);
-    //at end show results
+    footr.html("Question " + curQuesNum + " of " + questions.length);    
 }
 
 function showScores() {
     console.log("show Scores");
-    var gameOverHtml = "<h1>Result</h1>";
-    gameOverHtml += " <h2 id='score'> Your score : " + quiz.score + "</h2>";
+    var gameOverHtml = "<div class='resultspage'><h1>Result</h1>";
+    gameOverHtml += " <h2 id='score'> Your score : " + quiz.score + "</h2></div>";
 
     //grab div id"quiz - replace with this
     $('.grid').html(gameOverHtml);
 }
 
-///////////////////////////
-// FUNCTIONS
-/////////////////////////
-
 function initializeGame() {
     isEnded = false;
     console.log("initialize Game");
+    //need to use timer- one for each question, one for game total time
 }
 
 
-function hiLiteButtons(userResults) {
-    console.log(userResults.isRight, userResults.userChoice, userResults.correctAnswer);
-    console.log(userResults.buttonid);
+function hiLiteButtons(UserSelectedVals) {
+    console.log(UserSelectedVals.isRight, UserSelectedVals.userChoice, UserSelectedVals.correctAnswer);
+    console.log(UserSelectedVals.buttonid);
 
-    // var btnChoice = $('"#'+userResults.buttonid+'"');
-    var btnChoice = $('#' + userResults.buttonid);
+    var btnChoice = $('#' + UserSelectedVals.buttonid);
     console.log('btnChoice:::', btnChoice);
 
     //start hilighting buttons
-    if (userResults.isRight) {
+    if (UserSelectedVals.isRight) {
         btnChoice.addClass('grnback');
     } else {
         btnChoice.addClass('rdback');
         //loop through buttons to find the one with correct ans
         $('button').each(function () {
-            if ($(this).text() === userResults.correctAnswer) {
+            if ($(this).text() === UserSelectedVals.correctAnswer) {
                 $(this).addClass('grnback');
             }
 
@@ -102,19 +102,30 @@ function hiLiteButtons(userResults) {
 
 
 
-$(document).ready(function () {
-    console.log("Doc ready");
+$(document).ready(function () {    
 
     initializeGame();
 
+    $('.grid').hide(); // hide main screen only show splash & button
+
+    $('#dStart').click(function () {  //add click funtionality to start page fake button
+        $('#splashscreen').remove();
+        $('.grid').show();
+        console.log('doc ready bstart click');
+    });
+   
     //add click event to buttons
     $('button').click(function () {
         var bID = $(this).attr("id");
-        console.log("ButtonClicked", bID, $(this).html());
-        var userResults = quiz.guess($(this).html());  //38.29
-        userResults.setButtonId(bID);
-        hiLiteButtons(userResults);
-        //populateHtml();
+        console.log("ButtonClicked doc ready", bID, $(this).html());
+        var UserSelectedVals = quiz.guess($(this).html());  //38.29
+        UserSelectedVals.setButtonId(bID);
+        if (bID === 'bStart') {
+            $('#splashscreen').remove();
+            $('.grid').show();
+        } else {
+            hiLiteButtons(UserSelectedVals);
+        }
     })
 
     populateHtml();
