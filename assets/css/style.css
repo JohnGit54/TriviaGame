@@ -145,3 +145,21 @@ footer{
 #gameResultStat{
     margin-top:15%;
 }
+
+  /* giphy items */
+#resultGiphy{
+    height: 200px;
+    width: 500px;
+    margin:0 auto ;
+}
+
+#resultGiphy h2{
+   color: red;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: 28px;
+}
+#myGIF{
+    height: 150px;
+    width: 150px;
+    float: left;
+}
