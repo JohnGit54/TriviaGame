@@ -53,6 +53,7 @@ body{
 	background: darkkhaki;
     font-size: 36px;
     border-radius: 15px;
+    text-align: center;
 }
 
 #splashscreen{
@@ -89,7 +90,7 @@ body{
 }
 
 button{
-    margin: 20px 40px 10px 0;
+    margin: 20px 3% 10px 3%;
     padding: 10px 10px;
     width: 400px;
 	height: 100px;
