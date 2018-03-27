@@ -34,17 +34,19 @@ Question.prototype.correctAnswer = function(choice){
 }
 
 
-function UserSelectedVals(isRight , userChoice , correctAnswer){
-    this.isRight = isRight;
-    this.userChoice = userChoice;
-    this.correctAnswer = correctAnswer;
-    this.buttonid = null;
+class UserSelectedVals {
+    constructor(isRight, userChoice, correctAnswer) {
+        this.isRight = isRight;
+        this.userChoice = userChoice;
+        this.correctAnswer = correctAnswer;
+        this.buttonid = null;
+    }
+    setButtonId(buttonId) {
+        console.log("in setButtonId=function(buttonId) ", buttonId);
+        this.buttonid = buttonId;
+    }
 }
 
-UserSelectedVals.prototype.setButtonId=function(buttonId){
-    console.log("in setButtonId=function(buttonId) " ,buttonId );
-    this.buttonid = buttonId;
-}
 
 
 
